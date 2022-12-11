@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Gamahiro/weatherApp/issues"
   },
-  "homepage": "https://github.com/Gamahiro/weatherApp#readme",
+  "homepage": "https://github.com/Gamahiro/weatherApp",
   "devDependencies": {
     "css-loader": "^6.7.2",
     "gh-pages": "^4.0.0",
