@@ -12,7 +12,7 @@ btn.addEventListener('click', () => {
 async function getLocData(loc) {
     const locURL = `http://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=${limit}&appid=${key}`;
     try {
-        const response = await fetch(locURL, { mode: 'cors' });
+        const response = await fetch(locURL);
         const locData = await response.json();
         const locProcessed = locProcess(locData);
         return locProcessed;
@@ -29,7 +29,7 @@ async function getWeatherData(loc) {
         let lon = latlon.lon;
         let lat = latlon.lat;
         const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
-        const response = await fetch(weatherURL, { mode: 'cors' });
+        const response = await fetch(weatherURL);
         const weatherData = await response.json();
         const weatherProcessed = weatherProcess(weatherData);
         return weatherProcessed;
