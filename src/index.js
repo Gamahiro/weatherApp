@@ -11,6 +11,13 @@ btn.addEventListener('click', () => {
     populateDom(cityName);
 });
 
+input.addEventListener('keypress', (event) => {
+    if(event.key === "Enter") {
+        event.preventDefault();
+        btn.click();
+    }
+});
+
 
 
 async function populateDom(cityName) {
