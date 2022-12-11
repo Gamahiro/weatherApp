@@ -10,7 +10,7 @@ btn.addEventListener('click', () => {
 });
 
 async function getLocData(loc) {
-    const locURL = `http://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=${limit}&appid=${key}`;
+    const locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=${limit}&appid=${key}`;
     try {
         const response = await fetch(locURL);
         const locData = await response.json();
