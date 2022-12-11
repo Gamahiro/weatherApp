@@ -1,6 +1,6 @@
 import './style.css';
-import { createWeather } from "./API calls/getWeather";
-import { createCurrentContent, populateFooter, initDocument } from "./generateDOMelem/createDom";
+import { createWeather, getWeatherGif } from "./API calls/getWeather";
+import { createCurrentContent, populateFooter, initDocument, setWeatherGif } from "./generateDOMelem/createDom";
 
 const btn = document.querySelector('#searchBtn');
 const input = document.querySelector('input');
@@ -16,6 +16,9 @@ btn.addEventListener('click', () => {
 async function populateDom(cityName) {
     const weatherObj = await createWeather(cityName);
     createCurrentContent(weatherObj);
+    const weatherGif = await getWeatherGif(weatherObj.weatherType);
+    console.log(weatherGif);
+    setWeatherGif(weatherGif);
 }
 
 async function footerData() {
@@ -31,6 +34,7 @@ async function footerData() {
     }
     
 }
+
 
 initDocument();
 populateDom(cityName);

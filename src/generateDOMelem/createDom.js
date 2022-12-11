@@ -2,9 +2,12 @@
 function initDocument(){
     const content = document.createElement('div');
     content.className = 'content';
+    const weatherGif = document.createElement('img');
+    weatherGif.className = 'weatherGif';
     const footer = document.createElement('footer')
     footer.className = 'footer';
     document.body.appendChild(content);
+    document.body.appendChild(weatherGif);
     document.body.appendChild(footer);
 
     const locName = document.createElement('div');
@@ -28,6 +31,8 @@ function initDocument(){
     content.appendChild(feelsLike);
     content.appendChild(windSpeed);
 
+    
+
     const city1 = document.createElement('div');
     city1.className = 'city1';
 
@@ -45,6 +50,11 @@ function initDocument(){
     footer.appendChild(city3);
     footer.appendChild(city4);
 };
+
+function setWeatherGif(gifUrl) {
+    console.log(gifUrl);
+    document.querySelector('.weatherGif').src = gifUrl;
+}
 
 
 function createCurrentContent(weatherObj) {
@@ -88,4 +98,4 @@ function returnColor(value) {
 }
 
 
-export {createCurrentContent, populateFooter, initDocument};
+export {createCurrentContent, populateFooter, initDocument, setWeatherGif};

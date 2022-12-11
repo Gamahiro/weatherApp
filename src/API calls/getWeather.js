@@ -1,5 +1,5 @@
 let key = 'f311acbde5084d948501ed5874b9b20e';
-let unit = 'metric'
+let unit = 'metric';
 
 //API calls
 
@@ -25,6 +25,18 @@ async function getWeatherData(lat, lon) {
         return weatherData;
     } catch (error) {
         console.log(error);
+    }
+}
+
+async function getWeatherGif(weather) {
+    try {
+        const giphyKey = 'mPks7xOqmUh3hb02SSufYq0vY6EOv0OA';
+        const giphyURL = `https://api.giphy.com/v1/gifs/search?key=${giphyKey}&q=${weather}&limit=1&offset=0&rating=g&lang=en`;
+        const response = await fetch(giphyURL, {mode: 'cors'});
+        const weatherGif = await response.json();
+        return weatherGif.data[0].images.original.url;
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -57,4 +69,4 @@ async function createWeather(locName) {
     return weatherProcessed;
     }
 
-export {createWeather};
+export {createWeather, getWeatherGif};
