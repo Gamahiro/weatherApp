@@ -1,6 +1,54 @@
 
+function initDocument(){
+    const content = document.createElement('div');
+    content.className = 'content';
+    const footer = document.createElement('footer')
+    footer.className = 'footer';
+    document.body.appendChild(content);
+    document.body.appendChild(footer);
+
+    const locName = document.createElement('div');
+    locName.className = 'locName';
+
+    const locTemp = document.createElement('div');
+    locTemp.className = 'locTemp';
+
+    const weatherType = document.createElement('div');
+    weatherType.className = 'weatherType';
+
+    const feelsLike =  document.createElement('div');
+    feelsLike.className = 'feelsLike';
+    
+    const windSpeed =  document.createElement('div');
+    windSpeed.className = 'windSpeed';
+    
+    content.appendChild(locName);
+    content.appendChild(locTemp);
+    content.appendChild(weatherType);
+    content.appendChild(feelsLike);
+    content.appendChild(windSpeed);
+
+    const city1 = document.createElement('div');
+    city1.className = 'city1';
+
+    const city2 = document.createElement('div');
+    city2.className = 'city2';
+
+    const city3 = document.createElement('div');
+    city3.className = 'city3';
+    
+    const city4 = document.createElement('div');
+    city4.className = 'city4';
+
+    footer.appendChild(city1);
+    footer.appendChild(city2);
+    footer.appendChild(city3);
+    footer.appendChild(city4);
+};
+
 
 function createCurrentContent(weatherObj) {
+
     document.querySelector('.locName').textContent = weatherObj.name;
     document.querySelector('.locTemp').textContent = 'Temperature: ' + weatherObj.temp + ' °C';
     document.querySelector('.feelsLike').textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
@@ -9,22 +57,22 @@ function createCurrentContent(weatherObj) {
 }
 
  function populateFooter(city1, city2, city3, city4) {
-    const osloW = document.querySelector('.osloW');
-    const londonW = document.querySelector('.londonW');
-    const madridW = document.querySelector('.madridW');
-    const washingtonW = document.querySelector('.washingtonW');
+    const elemCity1 = document.querySelector('.city1');
+    const elemCity2 = document.querySelector('.city2');
+    const elemCity3 = document.querySelector('.city3');
+    const elemCity4 = document.querySelector('.city4');
 
-    osloW.textContent = city1.name + ': ' + city1.temp + ' °C';
-    osloW.style.backgroundColor = returnColor(city1.temp);
+    elemCity1.textContent = city1.name + ': ' + city1.temp + '°C';
+    elemCity1.style.backgroundColor = returnColor(city1.temp);
 
-    londonW.textContent = city2.name + ': ' + city2.temp + ' °C';
-    londonW.style.backgroundColor = returnColor(city2.temp);
+    elemCity2.textContent = city2.name + ': ' + city2.temp + '°C';
+    elemCity2.style.backgroundColor = returnColor(city2.temp);
 
-    madridW.textContent = city3.name + ': ' + city3.temp + ' °C';
-    madridW.style.backgroundColor = returnColor(city3.temp);
+    elemCity3.textContent = city3.name + ': ' + city3.temp + '°C';
+    elemCity3.style.backgroundColor = returnColor(city3.temp);
 
-    washingtonW.textContent = city4.name + ': ' + city4.temp + ' °C';
-    washingtonW.style.backgroundColor = returnColor(city4.temp);
+    elemCity4.textContent = city4.name + ': ' + city4.temp + '°C';
+    elemCity4.style.backgroundColor = returnColor(city4.temp);
 }
 
 function returnColor(value) {
@@ -40,4 +88,4 @@ function returnColor(value) {
 }
 
 
-export {createCurrentContent, populateFooter};
+export {createCurrentContent, populateFooter, initDocument};

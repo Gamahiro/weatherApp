@@ -1,6 +1,6 @@
 import './style.css';
 import { createWeather } from "./API calls/getWeather";
-import { createCurrentContent, populateFooter } from "./generateDOMelem/createDom";
+import { createCurrentContent, populateFooter, initDocument } from "./generateDOMelem/createDom";
 
 const btn = document.querySelector('#searchBtn');
 const input = document.querySelector('input');
@@ -32,6 +32,6 @@ async function footerData() {
     
 }
 
-
+initDocument();
 populateDom(cityName);
 footerData();
