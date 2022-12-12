@@ -1,14 +1,33 @@
 
 function initDocument(){
+    const searchBox = document.createElement('div');
+    searchBox.className = 'searchBox';
     const content = document.createElement('div');
     content.className = 'content';
     const weatherGif = document.createElement('img');
     weatherGif.className = 'weatherGif';
+    const hr3Container = document.createElement('div');
+    hr3Container.className = 'hr3Container';
     const footer = document.createElement('footer')
     footer.className = 'footer';
+
+    document.body.appendChild(searchBox);
     document.body.appendChild(content);
     document.body.appendChild(weatherGif);
+    document.body.appendChild(hr3Container);
     document.body.appendChild(footer);
+
+    const locInput = document.createElement('input');
+    locInput.type = 'text';
+    locInput.name = 'location';
+    locInput.id = 'location';
+
+    const searchBtn = document.createElement('button');
+    searchBtn.id = 'searchBtn';
+    searchBtn.textContent = 'Search';
+
+    searchBox.appendChild(locInput);
+    searchBox.appendChild(searchBtn);
 
     const locName = document.createElement('div');
     locName.className = 'locName';
@@ -51,11 +70,44 @@ function initDocument(){
     footer.appendChild(city4);
 };
 
+function create3HrElem(hourlyWeatherObj) {
+    console.log(hourlyWeatherObj);
+    const container = document.querySelector('.hr3Container');
+const hrElem = document.createElement('div');
+hrElem.className = 'hrElem';
+container.appendChild(hrElem);
+
+const locName = document.createElement('div');
+locName.textContent = hourlyWeatherObj.time;
+
+const locTemp = document.createElement('div');
+locTemp.textContent = 'Temperature: ' + hourlyWeatherObj.temp;
+
+const feelsLike = document.createElement('div');
+feelsLike.textContent = 'Feels like: ' +hourlyWeatherObj.feelsLike;
+
+const weatherType = document.createElement('img');
+weatherType.src = `http://openweathermap.org/img/w/${hourlyWeatherObj.weatherIcon}.png`;
+
+hrElem.appendChild(locName);
+hrElem.appendChild(locTemp);
+hrElem.appendChild(feelsLike);
+hrElem.appendChild(weatherType);
+}
+
 function setWeatherGif(gifUrl) {
-    console.log(gifUrl);
     document.querySelector('.weatherGif').src = gifUrl;
 }
 
+function removeChildElementsh3e() {
+    const h3e = document.querySelector('.hr3Container');
+    const length = h3e.children.length;
+
+    for (let index = 0; index < length; index++) {
+        h3e.removeChild(h3e.firstChild);
+    }
+
+}
 
 function createCurrentContent(weatherObj) {
 
@@ -98,4 +150,4 @@ function returnColor(value) {
 }
 
 
-export {createCurrentContent, populateFooter, initDocument, setWeatherGif};
+export {createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeChildElementsh3e};

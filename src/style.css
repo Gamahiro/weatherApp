@@ -68,3 +68,36 @@ footer div {
     text-align: center;
 
 }
+
+.hr3Container {
+    margin-top: 50px;
+height: 125px;
+display: flex;
+align-items: space-between;
+}
+
+.hrElem {
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 5px 15px 2px 15px;
+}
+
+.hrElem div {
+    text-align: right;
+}
+
+.hrElem :first-child {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.hrElem img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: steelblue;
+}

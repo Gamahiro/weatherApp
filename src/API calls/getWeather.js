@@ -40,6 +40,17 @@ async function getWeatherGif(weather) {
     }
 }
 
+async function getHourlyForecast(lat, lon) {
+    try {
+        const hourlyUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=${unit}&cnt=5`;
+        const response = await fetch(hourlyUrl, {mode: 'cors'});
+        const hourlyWeather = await response.json();
+        return hourlyWeather;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 //data processing
 function weatherProcess(weatherData) {
     let name = weatherData.name;
@@ -57,7 +68,22 @@ function locProcess(loc) {
     return { lat, lon };
 }
 
+async function hourlyProcess(hr3Data) {
+    let hr3Array = [];
 
+    for (let i = 0; i < hr3Data.list.length; i++) {
+
+        const element = hr3Data.list[i];
+        const time = element.dt_txt.slice(11);
+        const temp = element.main.temp;
+        const feelsLike = element.main.feels_like;
+        const weatherIcon = element.weather[0].icon;
+
+        const weatherObj = {time, temp, feelsLike, weatherIcon};
+        hr3Array.push(weatherObj);
+    }
+return hr3Array;
+}
 
 
 // init
@@ -69,4 +95,14 @@ async function createWeather(locName) {
     return weatherProcessed;
     }
 
-export {createWeather, getWeatherGif};
+ 
+
+async function createWeatherHourly(locName) {
+    const loc = await getLocData(locName);
+    const latlon = locProcess(loc);
+    const response = await getHourlyForecast(latlon.lat, latlon.lon);
+    const processedHourly = await hourlyProcess(response);
+    console.log(response);
+    return processedHourly;
+}
+export {createWeather, getWeatherGif, getWeatherData, getLocData, weatherProcess, createWeatherHourly};
