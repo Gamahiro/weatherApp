@@ -4,6 +4,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 1200px;
+    max-width: 100%;
     height: 800px;
     display: flex;
     flex-direction: column;
@@ -71,9 +72,10 @@ footer div {
 
 .hr3Container {
     margin-top: 50px;
-height: 125px;
+height: 105px;
 display: flex;
 align-items: space-between;
+font-size: 0.8em;
 }
 
 .hrElem {
@@ -96,8 +98,12 @@ align-items: space-between;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50px;
+    width: 40px;
     border: 2px solid black;
     border-radius: 50px;
     background-color: steelblue;
+}
+
+.inlineIcon {
+    display: inline;
 }

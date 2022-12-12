@@ -78,6 +78,10 @@ hrElem.className = 'hrElem';
 container.appendChild(hrElem);
 
 const locName = document.createElement('div');
+const locNameIcon = document.createElement('img');
+locNameIcon.className = 'inlineIcon';
+locNameIcon.src = 'src/assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg'
+locName.appendChild(locNameIcon);
 locName.textContent = hourlyWeatherObj.time;
 
 const locTemp = document.createElement('div');
@@ -111,11 +115,17 @@ function removeChildElementsh3e() {
 
 function createCurrentContent(weatherObj) {
 
-    document.querySelector('.locName').textContent = weatherObj.name;
-    document.querySelector('.locTemp').textContent = 'Temperature: ' + weatherObj.temp + ' °C';
-    document.querySelector('.feelsLike').textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
-    document.querySelector('.weatherType').textContent = 'Weather: ' + weatherObj.weatherType;
-    document.querySelector('.windSpeed').textContent = weatherObj.windSpeed + ' m/s';
+    const locName = document.querySelector('.locName');
+    const locTemp = document.querySelector('.locTemp');
+    const feelsLike = document.querySelector('.feelsLike')
+    const weatherType = document.querySelector('.weatherType');
+    const weatherSpeed = document.querySelector('.windSpeed');
+    
+    locName.textContent = weatherObj.name;
+    locTemp.textContent = 'Temperature: ' + weatherObj.temp + ' °C';
+    feelsLike.textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
+    weatherType.textContent = 'Weather: ' + weatherObj.weatherType;
+    weatherSpeed.textContent = weatherObj.windSpeed + ' m/s';
 }
 
  function populateFooter(city1, city2, city3, city4) {
