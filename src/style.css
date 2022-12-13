@@ -10,7 +10,7 @@ body {
 }
 
 @media only screen and (max-width: 750px) {
-    .mainContainer {width: 370px; height: 650px;}
+    .mainContainer {width: 100vw; height: 100vh;}
     .searchBox {width: 50px; height: 50px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 320px; height: 110px; padding: 2px;}
@@ -22,7 +22,7 @@ body {
 }
 
 @media only screen and (min-width: 750px) {
-    .mainContainer {width: 750px; height: 1000px;}
+    .mainContainer {width: 100vw; height: 100vh;}
     .searchBox {width: 50px; height: 50px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 110px; padding: 15px;}
@@ -35,7 +35,7 @@ body {
 }
 
 @media only screen and (min-width: 1000px) {
-    .mainContainer {width: 1000px; height: 750px;}
+    .mainContainer {width: 100vw; height: 100vh;}
     .searchBox {width: 50px; height: 50px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
@@ -47,7 +47,7 @@ body {
     .footer div{padding: 10px;}
 }
 @media only screen and (min-width: 1400px) {
-    .mainContainer {width: 1400px; height: 750px;}
+    .mainContainer {width: 100vw; height: 100vh;}
     .searchBox {width: 50px; height: 50px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
@@ -59,7 +59,7 @@ body {
     .footer div{padding: 10px;}
 }
 @media only screen and (min-width: 2560px) {
-    .mainContainer {width: 2500px; height: 750px;}
+    .mainContainer {width: 100vw; height: 100vh;}
     .searchBox {width: 50px; height: 50px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
