@@ -1,5 +1,6 @@
+import locNameIconUrl from '../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg';
 
-function initDocument(){
+function initDocument() {
     const searchBox = document.createElement('div');
     searchBox.className = 'searchBox';
     const content = document.createElement('div');
@@ -38,19 +39,19 @@ function initDocument(){
     const weatherType = document.createElement('div');
     weatherType.className = 'weatherType';
 
-    const feelsLike =  document.createElement('div');
+    const feelsLike = document.createElement('div');
     feelsLike.className = 'feelsLike';
-    
-    const windSpeed =  document.createElement('div');
+
+    const windSpeed = document.createElement('div');
     windSpeed.className = 'windSpeed';
-    
+
     content.appendChild(locName);
     content.appendChild(locTemp);
     content.appendChild(weatherType);
     content.appendChild(feelsLike);
     content.appendChild(windSpeed);
 
-    
+
 
     const city1 = document.createElement('div');
     city1.className = 'city1';
@@ -60,7 +61,7 @@ function initDocument(){
 
     const city3 = document.createElement('div');
     city3.className = 'city3';
-    
+
     const city4 = document.createElement('div');
     city4.className = 'city4';
 
@@ -73,30 +74,26 @@ function initDocument(){
 function create3HrElem(hourlyWeatherObj) {
     console.log(hourlyWeatherObj);
     const container = document.querySelector('.hr3Container');
-const hrElem = document.createElement('div');
-hrElem.className = 'hrElem';
-container.appendChild(hrElem);
+    const hrElem = document.createElement('div');
+    hrElem.className = 'hrElem';
+    container.appendChild(hrElem);
 
-const locName = document.createElement('div');
-const locNameIcon = document.createElement('img');
-locNameIcon.className = 'inlineIcon';
-locNameIcon.src = 'src/assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg'
-locName.appendChild(locNameIcon);
-locName.textContent = hourlyWeatherObj.time;
+    const locName = document.createElement('div');
+    locName.textContent = hourlyWeatherObj.time;
 
-const locTemp = document.createElement('div');
-locTemp.textContent = 'Temperature: ' + hourlyWeatherObj.temp;
+    const locTemp = document.createElement('div');
+    locTemp.textContent = 'Temperature: ' + hourlyWeatherObj.temp;
 
-const feelsLike = document.createElement('div');
-feelsLike.textContent = 'Feels like: ' +hourlyWeatherObj.feelsLike;
+    const feelsLike = document.createElement('div');
+    feelsLike.textContent = 'Feels like: ' + hourlyWeatherObj.feelsLike;
 
-const weatherType = document.createElement('img');
-weatherType.src = `http://openweathermap.org/img/w/${hourlyWeatherObj.weatherIcon}.png`;
+    const weatherType = document.createElement('img');
+    weatherType.src = `http://openweathermap.org/img/w/${hourlyWeatherObj.weatherIcon}.png`;
 
-hrElem.appendChild(locName);
-hrElem.appendChild(locTemp);
-hrElem.appendChild(feelsLike);
-hrElem.appendChild(weatherType);
+    hrElem.appendChild(locName);
+    hrElem.appendChild(locTemp);
+    hrElem.appendChild(feelsLike);
+    hrElem.appendChild(weatherType);
 }
 
 function setWeatherGif(gifUrl) {
@@ -120,15 +117,18 @@ function createCurrentContent(weatherObj) {
     const feelsLike = document.querySelector('.feelsLike')
     const weatherType = document.querySelector('.weatherType');
     const weatherSpeed = document.querySelector('.windSpeed');
-    
+
     locName.textContent = weatherObj.name;
+    const locNameIcon = document.createElement('embed');
+    locNameIcon.src = locNameIconUrl;
+    locName.appendChild(locNameIcon);
     locTemp.textContent = 'Temperature: ' + weatherObj.temp + ' °C';
     feelsLike.textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
     weatherType.textContent = 'Weather: ' + weatherObj.weatherType;
     weatherSpeed.textContent = weatherObj.windSpeed + ' m/s';
 }
 
- function populateFooter(city1, city2, city3, city4) {
+function populateFooter(city1, city2, city3, city4) {
     const elemCity1 = document.querySelector('.city1');
     const elemCity2 = document.querySelector('.city2');
     const elemCity3 = document.querySelector('.city3');
@@ -160,4 +160,4 @@ function returnColor(value) {
 }
 
 
-export {createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeChildElementsh3e};
+export { createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeChildElementsh3e };
