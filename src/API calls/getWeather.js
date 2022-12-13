@@ -3,13 +3,20 @@ let unit = 'metric';
 
 //API calls
 
-async function getLocData(loc) {
+async function getLocData(cityName) {
     //gets longitude and latitude of string name   
-    const locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=5&appid=${key}`;
+    const locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${key}`;
     try {
         const response = await fetch(locURL, { mode: 'cors' });
+        if(response.status !== 200) {
+            throw new Error(`Statuscode: ${response.status}`);
+        } else {
         const locData = await response.json();
+        if(locData.length === 0) {
+            throw new Error(`${cityName} not found`);
+        }
         return locData;
+    }
     } catch (error) {
         console.log(error);
     }
@@ -63,12 +70,6 @@ function weatherProcess(weatherData) {
     return { name, country, temp, feelsLike, weatherType, windSpeed };
 }
 
-function locProcess(loc) {
-    let lat = loc[0].lat;
-    let lon = loc[0].lon;
-    return { lat, lon };
-}
-
 async function hourlyProcess(hr3Data) {
     let hr3Array = [];
 
@@ -85,23 +86,4 @@ async function hourlyProcess(hr3Data) {
     return hr3Array;
 }
 
-
-// init
-async function createWeather(locName) {
-    const locData = await getLocData(locName);
-    let loc = locProcess(locData);
-    let weatherData = await getWeatherData(loc.lat, loc.lon);
-    const weatherProcessed = weatherProcess(weatherData);
-    return weatherProcessed;
-}
-
-
-
-async function createWeatherHourly(locName) {
-    const loc = await getLocData(locName);
-    const latlon = locProcess(loc);
-    const response = await getHourlyForecast(latlon.lat, latlon.lon);
-    const processedHourly = await hourlyProcess(response);
-    return processedHourly;
-}
-export { createWeather, getWeatherGif, getWeatherData, getLocData, weatherProcess, createWeatherHourly, getHourlyForecast, hourlyProcess };
+export { getWeatherGif, getWeatherData, getLocData, weatherProcess, getHourlyForecast, hourlyProcess };

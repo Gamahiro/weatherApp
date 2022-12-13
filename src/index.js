@@ -1,5 +1,5 @@
 import './style.css';
-import { getHourlyForecast, hourlyProcess,createWeather, getWeatherGif, getWeatherData, getLocData, weatherProcess, createWeatherHourly } from "./API calls/getWeather";
+import { getHourlyForecast, hourlyProcess, getWeatherGif, getWeatherData, getLocData, weatherProcess } from "./API calls/getWeather";
 import { createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeAllChildElement, createDropDownOptions } from "./generateDOMelem/createDom";
 import { createDropDownMenu, dropdownToggle } from "./Events/dropdownMenu";
 
@@ -8,34 +8,42 @@ let cityName = 'oslo';
 function addEvents() {
     const btn = document.querySelector('#searchBtn');
     const input = document.querySelector('#location');
-    createDropDownMenu(btn, document.querySelector('.dropdownContainer'));
+    const dropdownContainer = document.querySelector('.dropdownContainer');
 
     btn.addEventListener('click', async () => {
+        if(dropdownContainer.style.display !== 'block') {
+            dropdownContainer.style.display = 'block';
+        }
         cityName = input.value;
         const cities = await getLocations(cityName);
-        createDropDownOptions(cities.length);
-        for (let index = 0; index < cities.length; index++) {
-            const element = cities[index];
-            const DomElement = document.querySelector(`#item${index + 1}`);
-            DomElement.textContent = `${element.name}, ${element.country}`;
-            DomElement.addEventListener('click', async (e) => {
-                const weatherData = await getWeatherData(element.lat, element.lon);
-                const weatherProcessed = weatherProcess(weatherData);
-                dropdownToggle(document.querySelector('.dropdownContainer'));
-                createCurrentContent(weatherProcessed);
-                const weatherGif = await getWeatherGif(weatherProcessed.weatherType);
-                setWeatherGif(weatherGif);
-                removeAllChildElement('hr3Container');
-                const hourlyWeather = await getHourlyForecast(element.lat, element.lon);
-                const hourlyWeatherProcessed = await hourlyProcess(hourlyWeather);
-                for (let index = 0; index < hourlyWeatherProcessed.length; index++) {
-                    const element = hourlyWeatherProcessed[index];
-                    create3HrElem(element);
-                }
-
-            });
-
+        //input.value = '';
+        
+        if (cities === undefined){
+            alert(`'${input.value}' was not found`);
         }
+         else if (cities.length === 1) {
+            populateDom(cities[0].lat, cities[0].lon);
+        } else {
+            createDropDownOptions(cities.length);
+        
+            for (let index = 0; index < cities.length; index++) {
+                const element = cities[index];
+                const DomElement = document.querySelector(`#item${index + 1}`);
+                if(element.state === undefined) {
+                    DomElement.textContent = `${element.name}, ${element.country}`;
+                } else {
+                    DomElement.textContent = `${element.name}, ${element.state}, ${element.country}`;
+
+                }
+                
+                DomElement.addEventListener('click', async (e) => {
+                    populateDom(element.lat, element.lon);
+                    dropdownContainer.style.display = 'none';
+                });
+            }
+        }
+
+        
         //populateDom(cityName);
     });
 
@@ -47,17 +55,24 @@ function addEvents() {
     });
 }
 
-async function populateDom(cityName) {
-    const weatherObj = await createWeather(cityName);
+async function populateDom(lat, lon) {
+    const weatherData = await getWeatherData(lat, lon);
+    const weatherObj = weatherProcess(weatherData);
     createCurrentContent(weatherObj);
     const weatherGif = await getWeatherGif(weatherObj.weatherType);
     setWeatherGif(weatherGif);
     removeAllChildElement('hr3Container');
-    const hourlyWeather = await createWeatherHourly(cityName);
-    for (let index = 0; index < hourlyWeather.length; index++) {
-        const element = hourlyWeather[index];
+    const hourlyWeather = await getHourlyForecast(lat, lon);
+    const hourlyWeatherObj = await hourlyProcess(hourlyWeather);
+    for (let index = 0; index < hourlyWeatherObj.length; index++) {
+        const element = hourlyWeatherObj[index];
         create3HrElem(element);
     }
+}
+
+async function getInitLoc(cityName) {
+    let latlon = await getLocations(cityName);
+    populateDom(latlon[0].lat, latlon[0].lon);
 }
 
 async function getLocations(cityName) {
@@ -94,7 +109,6 @@ async function footerData() {
 
 
 initDocument();
-populateDom(cityName);
+getInitLoc(cityName);
 footerData();
 addEvents();
-getLocations(cityName);
