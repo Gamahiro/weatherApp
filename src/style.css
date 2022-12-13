@@ -12,7 +12,7 @@ body {
 
 @media only screen and (max-width: 750px) {
     .mainContainer {width: 100vw; height: 90vh;}
-    .searchBox {width: 50px; height: 50px;}
+    .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 320px; height: 110px; padding: 2px;}
     .weatherGif{width: 320px;}
@@ -24,7 +24,7 @@ body {
 
 @media only screen and (min-width: 750px) {
     .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 50px;}
+    .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 110px; padding: 15px;}
     .weatherGif{width: 500px;}
@@ -37,7 +37,7 @@ body {
 
 @media only screen and (min-width: 1000px) {
     .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 50px;}
+    .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
     .weatherGif{width: 400px;}
@@ -49,7 +49,7 @@ body {
 }
 @media only screen and (min-width: 1400px) {
     .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 50px;}
+    .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
     .weatherGif{width: 400px;}
@@ -61,7 +61,7 @@ body {
 }
 @media only screen and (min-width: 2560px) {
     .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 50px;}
+    .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .content {width: 450px; height: 100px; padding: 15px;}
     .weatherGif{width: 400px;}
@@ -88,6 +88,32 @@ body {
     align-items: center;
 }
 
+.dropdownContainer {
+    display: none;
+    margin-top: 5px;
+    width: 300px;
+    height: 300px;
+}
+.dropdownElements {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: space-between;
+    position: absolute;
+
+}
+
+.menuBtn {
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1px;
+}
+
+.menuBtn:hover {
+    cursor: pointer;
+}
 
 #location {
     text-align: center;

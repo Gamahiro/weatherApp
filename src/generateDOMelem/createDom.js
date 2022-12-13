@@ -3,6 +3,7 @@ import FeelsLikeIconUrl from '../assets/icons/dew_point_FILL0_wght400_GRAD0_opsz
 import weatherUrl from '../assets/icons/clear_day_FILL0_wght400_GRAD0_opsz48.svg'
 import windSpeedUrl from '../assets/icons/air_FILL0_wght400_GRAD0_opsz48.svg'
 
+//DOM init functions
 function createContainers() {
     const mainContainer = document.createElement('div');
     mainContainer.className = 'mainContainer';
@@ -27,35 +28,41 @@ function createContainers() {
 
 function createSearchBox() {
     const searchBox = document.querySelector('.searchBox');
-
     const locInput = document.createElement('input');
     locInput.type = 'text';
     locInput.name = 'location';
     locInput.id = 'location';
+    searchBox.appendChild(locInput);
+
 
     const searchBtn = document.createElement('button');
     searchBtn.id = 'searchBtn';
     searchBtn.textContent = 'Search';
-
-    searchBox.appendChild(locInput);
     searchBox.appendChild(searchBtn);
+
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.className = 'dropdownContainer';
+    const dropdownElements = document.createElement('div');
+    dropdownElements.className = 'dropdownElements';
+    dropdownContainer.appendChild(dropdownElements);
+
+    searchBox.appendChild(dropdownContainer);
+
+    
 }
+
+
 
 function createContent() {
     const content = document.querySelector('.content');
-
     const locName = document.createElement('div');
     locName.className = 'locName';
-
     const locTemp = document.createElement('div');
     locTemp.className = 'locTemp';
-
     const weatherType = document.createElement('div');
     weatherType.className = 'weatherType';
-
     const feelsLike = document.createElement('div');
     feelsLike.className = 'feelsLike';
-
     const windSpeed = document.createElement('div');
     windSpeed.className = 'windSpeed';
 
@@ -102,13 +109,10 @@ function createFooterElems() {
     const footer = document.querySelector('.footer');
     const city1 = document.createElement('div');
     city1.className = 'city1';
-
     const city2 = document.createElement('div');
     city2.className = 'city2';
-
     const city3 = document.createElement('div');
     city3.className = 'city3';
-
     const city4 = document.createElement('div');
     city4.className = 'city4';
 
@@ -125,8 +129,18 @@ function initDocument() {
     createFooterElems();
 };
 
+//Dynamic Element functions
+function createDropDownOptions(responseAmount) {
+    const dropdownElements = document.querySelector('.dropdownElements');
+    removeAllChildElement('dropdownElements');
+    for (let index = 1; index <= responseAmount; index++) {
+        const element = document.createElement('div');
+        element.className = 'menuBtn';
+        element.id = `item${index}`;
+        dropdownElements.appendChild(element);
+    }
+}
 function create3HrElem(hourlyWeatherObj) {
-    console.log(hourlyWeatherObj);
     const container = document.querySelector('.hr3Container');
     const hrElem = document.createElement('div');
     hrElem.className = 'hrElem';
@@ -154,15 +168,7 @@ function setWeatherGif(gifUrl) {
     document.querySelector('.weatherGif').src = gifUrl;
 }
 
-function removeChildElementsh3e() {
-    const h3e = document.querySelector('.hr3Container');
-    const length = h3e.children.length;
 
-    for (let index = 0; index < length; index++) {
-        h3e.removeChild(h3e.firstChild);
-    }
-
-}
 
 function createCurrentContent(weatherObj) {
     const locName = document.querySelector('.locName');
@@ -171,7 +177,7 @@ function createCurrentContent(weatherObj) {
     const weatherTypeText = document.querySelector('.weatherTypeText');
     const windSpeedText = document.querySelector('.windSpeedText');
 
-    locName.textContent = weatherObj.name;
+    locName.textContent = `${weatherObj.name}, ${weatherObj.country}`;
     locTempText.textContent = 'Temperature: ' + weatherObj.temp + ' °C';
     feelsLikeText.textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
     weatherTypeText.textContent = 'Weather: ' + weatherObj.weatherType;
@@ -197,6 +203,15 @@ function populateFooter(city1, city2, city3, city4) {
     elemCity4.style.backgroundColor = returnColor(city4.temp);
 }
 
+// utility
+function removeAllChildElement(classname) {
+    const parent = document.querySelector(`.${classname}`);
+    const length = parent.children.length;
+    for (let index = 0; index < length; index++) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 function returnColor(value) {
     if (value <= -1) {
         return 'skyblue';
@@ -210,4 +225,4 @@ function returnColor(value) {
 }
 
 
-export { createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeChildElementsh3e };
+export { createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeAllChildElement, createDropDownOptions };
