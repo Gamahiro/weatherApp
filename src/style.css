@@ -14,7 +14,8 @@ body {
     .mainContainer {width: 100vw; height: 90vh;}
     .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
-    .content {width: 320px; height: 110px; padding: 2px;}
+    .contentContainer{padding: 2px;}
+    .content {width: 320px; height: 110px; }
     .weatherGif{width: 320px;}
     .hr3Container{width: 330px; font-size: 0.6em;}
     .hrElem{width: 50px; padding: 5px; height: 105px;}
@@ -26,7 +27,8 @@ body {
     .mainContainer {width: 100vw; height: 95vh;}
     .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
-    .content {width: 450px; height: 110px; padding: 15px;}
+    .contentContainer{padding: 15px;}
+    .content {width: 450px; height: 110px;}
     .weatherGif{width: 500px;}
     .hr3Container{width: 600px; font-size: 0.7em;}
     .hrElem{width: 90px; padding: 5px; height: 105px;}
@@ -39,7 +41,8 @@ body {
     .mainContainer {width: 100vw; height: 95vh;}
     .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
-    .content {width: 450px; height: 100px; padding: 15px;}
+    .contentContainer{padding: 15px;}
+    .content {width: 450px; height: 110px;}
     .weatherGif{width: 400px;}
     .hr3Container{width: 900px; font-size: 0.8em;}
     .hrElem{width: 150px; padding: 5px; height: 105px;}
@@ -51,7 +54,8 @@ body {
     .mainContainer {width: 100vw; height: 95vh;}
     .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
-    .content {width: 450px; height: 100px; padding: 15px;}
+    .contentContainer{padding: 15px;}
+    .content {width: 450px; height: 110px;}
     .weatherGif{width: 400px;}
     .hr3Container{width: 900px; font-size: 0.8em;}
     .hrElem{width: 150px; padding: 5px; height: 105px;}
@@ -63,7 +67,8 @@ body {
     .mainContainer {width: 100vw; height: 95vh;}
     .searchBox {width: 50px; height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
-    .content {width: 450px; height: 100px; padding: 15px;}
+    .contentContainer{padding: 15px;}
+    .content {width: 450px; height: 110px;}
     .weatherGif{width: 400px;}
     .hr3Container{width: 900px; font-size: 0.8em;}
     .hrElem{width: 150px; padding: 5px; height: 105px;}
@@ -123,11 +128,17 @@ body {
 
 .content {
     display: grid;
-    background-color: aliceblue;
     justify-content: space-between;
     align-items: flex-start;
+    
+}
+.contentContainer {
+    background-color: aliceblue;
     border: 2px solid black;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .locName {

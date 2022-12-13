@@ -11,6 +11,8 @@ function createContainers() {
     searchBox.className = 'searchBox';
     const content = document.createElement('div');
     content.className = 'content';
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'contentContainer';
     const weatherGif = document.createElement('img');
     weatherGif.className = 'weatherGif';
     const hr3Container = document.createElement('div');
@@ -19,8 +21,9 @@ function createContainers() {
     footer.className = 'footer';
 
     mainContainer.appendChild(searchBox);
-    mainContainer.appendChild(content);
-    mainContainer.appendChild(weatherGif);
+    mainContainer.appendChild(contentContainer);
+    contentContainer.appendChild(content);
+    contentContainer.appendChild(weatherGif);
     mainContainer.appendChild(hr3Container);
     mainContainer.appendChild(footer);
     document.body.appendChild(mainContainer);
