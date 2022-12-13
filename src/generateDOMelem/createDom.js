@@ -1,4 +1,9 @@
-import locNameIconUrl from '../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg';
+import TempIconUrl from '../assets/icons/device_thermostat_FILL0_wght400_GRAD0_opsz48.svg';
+import FeelsLikeIconUrl from '../assets/icons/dew_point_FILL0_wght400_GRAD0_opsz48.svg';
+import weatherUrl from '../assets/icons/clear_day_FILL0_wght400_GRAD0_opsz48.svg'
+import windSpeedUrl from '../assets/icons/air_FILL0_wght400_GRAD0_opsz48.svg'
+
+
 
 function initDocument() {
     const searchBox = document.createElement('div');
@@ -119,13 +124,38 @@ function createCurrentContent(weatherObj) {
     const weatherSpeed = document.querySelector('.windSpeed');
 
     locName.textContent = weatherObj.name;
-    const locNameIcon = document.createElement('embed');
-    locNameIcon.src = locNameIconUrl;
-    locName.appendChild(locNameIcon);
-    locTemp.textContent = 'Temperature: ' + weatherObj.temp + ' °C';
-    feelsLike.textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
-    weatherType.textContent = 'Weather: ' + weatherObj.weatherType;
-    weatherSpeed.textContent = weatherObj.windSpeed + ' m/s';
+
+    const locTempIcon = document.createElement('img');
+    locTempIcon.className = 'inlineIcon';
+    locTempIcon.src = TempIconUrl;
+    const locTempText = document.createElement('span');
+    locTempText.textContent = 'Temperature: ' + weatherObj.temp + ' °C';
+    locTemp.appendChild(locTempIcon);
+    locTemp.appendChild(locTempText);
+
+    const feelsLikeIcon = document.createElement('img');
+    feelsLikeIcon.className = 'inlineIcon';
+    feelsLikeIcon.src = FeelsLikeIconUrl;
+    const feelsLikeText = document.createElement('span');
+    feelsLikeText.textContent = 'Feels like: ' + weatherObj.feelsLike + ' °C';
+    feelsLike.appendChild(feelsLikeIcon);
+    feelsLike.appendChild(feelsLikeText);
+
+    const weatherTypeIcon = document.createElement('img');
+    weatherTypeIcon.className = 'inlineIcon';
+    weatherTypeIcon.src = weatherUrl;
+    const weatherTypeText = document.createElement('span');
+    weatherTypeText.textContent = 'Weather: ' + weatherObj.weatherType;
+    weatherType.appendChild(weatherTypeIcon);
+    weatherType.appendChild(weatherTypeText);
+
+    const weatherSpeedIcon = document.createElement('img');
+    weatherSpeedIcon.className = 'inlineIcon';
+    weatherSpeedIcon.src = windSpeedUrl;
+    const weatherSpeedText = document.createElement('span');
+    weatherSpeedText.textContent = weatherObj.windSpeed + ' m/s';
+    weatherSpeed.appendChild(weatherSpeedIcon);
+    weatherSpeed.appendChild(weatherSpeedText);
 }
 
 function populateFooter(city1, city2, city3, city4) {

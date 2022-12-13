@@ -29,13 +29,9 @@ module.exports = {
             use: ['style-loader', 'css-loader'],
           }, 
           {
-            test: /\.(png|jpg|jpeg|gif|ico)$/i,
+            test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
             type: 'asset/resource',
           },
-          {
-            test: /\.svg$/,
-            loader: 'svg-inline-loader'
-        },
         ],
       },
       optimization: {

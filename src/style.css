@@ -25,13 +25,14 @@ body {
 }
 
 button {
-width: 100px;
-margin-top: 2px;
+    width: 100px;
+    margin-top: 2px;
 }
+
 #location {
     text-align: center;
-border: 2px solid black;
-border-radius: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
 .content {
@@ -39,7 +40,7 @@ border-radius: 5px;
     background-color: aliceblue;
     width: 400px;
     justify-content: space-between;
-    text-align: center;
+    align-items: flex-start;
     border: 2px solid black;
     border-radius: 15px;
     padding: 5px 15px 15px 15px;
@@ -49,6 +50,7 @@ border-radius: 5px;
     grid-column: 1 / 3;
     font-size: 2em;
     font-weight: bold;
+    text-align: center;
 }
 
 .weatherGif {
@@ -62,6 +64,7 @@ footer {
     margin-top: auto;
     display: flex;
 }
+
 footer div {
     background-color: aliceblue;
     border: 2px solid black;
@@ -72,10 +75,10 @@ footer div {
 
 .hr3Container {
     margin-top: 50px;
-height: 105px;
-display: flex;
-align-items: space-between;
-font-size: 0.8em;
+    height: 105px;
+    display: flex;
+    align-items: space-between;
+    font-size: 0.8em;
 }
 
 .hrElem {
@@ -106,4 +109,9 @@ font-size: 0.8em;
 
 .inlineIcon {
     display: inline;
+    margin: 0 0.125em;
+    padding: 0;
+    vertical-align: baseline;
+    height: 0.8em;
+    width: 0.8em;
 }
