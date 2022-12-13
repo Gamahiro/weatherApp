@@ -1,4 +1,63 @@
-* {
+@media only screen and (max-width: 750px) {
+    body {width: 370px; height: 650px;}
+    .searchBox {width: 50px; height: 50px;}
+    button {width: 100px; height: 35px; margin-top: 5px;}
+    .content {width: 320px; height: 110px; padding: 2px;}
+    .weatherGif{width: 320px;}
+    .hr3Container{width: 330px; font-size: 0.6em;}
+    .hrElem{width: 50px; padding: 5px; height: 105px;}
+    .hrElem img{width: 35px;}
+    .footer{width: 320px; height: 50px;}
+}
+
+@media only screen and (min-width: 750px) {
+    body {width: 750px; height: 1000px;}
+    .searchBox {width: 50px; height: 50px;}
+    button {width: 100px; height: 35px; margin-top: 5px;}
+    .content {width: 450px; height: 110px; padding: 15px;}
+    .weatherGif{width: 500px;}
+    .hr3Container{width: 600px; font-size: 0.7em;}
+    .hrElem{width: 90px; padding: 5px; height: 105px;}
+    .hrElem img{width: 40px;}
+    .footer{width: 700px; height: 40px;}
+    .footer div{padding: 10px;}
+}
+
+@media only screen and (min-width: 1000px) {
+    body {width: 1000px; height: 750px;}
+    .searchBox {width: 50px; height: 50px;}
+    button {width: 100px; height: 35px; margin-top: 5px;}
+    .content {width: 450px; height: 100px; padding: 15px;}
+    .weatherGif{width: 400px;}
+    .hr3Container{width: 900px; font-size: 0.8em;}
+    .hrElem{width: 150px; padding: 5px; height: 105px;}
+    .hrElem img{width: 55px;}
+    .footer{width: 900px; height: 40px;}
+    .footer div{padding: 10px;}
+}
+@media only screen and (min-width: 1400px) {
+    body {width: 1400px; height: 750px;}
+    .searchBox {width: 50px; height: 50px;}
+    button {width: 100px; height: 35px; margin-top: 5px;}
+    .content {width: 450px; height: 100px; padding: 15px;}
+    .weatherGif{width: 400px;}
+    .hr3Container{width: 900px; font-size: 0.8em;}
+    .hrElem{width: 150px; padding: 5px; height: 105px;}
+    .hrElem img{width: 55px;}
+    .footer{width: 900px; height: 40px;}
+    .footer div{padding: 10px;}
+}
+@media only screen and (min-width: 2560px) {
+    body {width: 2500px; height: 750px;}
+    .searchBox {width: 50px; height: 50px;}
+    button {width: 100px; height: 35px; margin-top: 5px;}
+    .content {width: 450px; height: 100px; padding: 15px;}
+    .weatherGif{width: 400px;}
+    .hr3Container{width: 900px; font-size: 0.8em;}
+    .hrElem{width: 150px; padding: 5px; height: 105px;}
+    .hrElem img{width: 55px;}
+    .footer{width: 900px; height: 40px;}
+    .footer div{padding: 10px;}
 }
 
 body {
@@ -6,25 +65,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-image: url('https://ugc.berkeley.edu/wp-content/uploads/2016/01/thunderstorm-3625405_1920-1536x864.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #142354;
-    height: 100%;
-    width: 100%;
+
 }
 
 .searchBox {
-    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-button {
-    width: 100px;
-}
 
 #location {
     text-align: center;
@@ -39,7 +93,6 @@ button {
     align-items: flex-start;
     border: 2px solid black;
     border-radius: 15px;
-    padding: 1% 3% 1% 3%;
 }
 
 .locName {
@@ -51,40 +104,36 @@ button {
 
 .weatherGif {
     border: 5px solid black;
-    border-radius: 10%;
+    border-radius: 15px;
 }
 
 footer {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer div {
     background-color: aliceblue;
     border: 2px solid black;
-    border-radius: 10%;
-    padding: 1% 3% 1% 3%;
+    border-radius: 5px;
     text-align: center;
 
 }
 
 .hr3Container {
-    height: 105px;
     display: flex;
-    align-items: space-between;
-    font-size: 0.6em;
+    justify-content: center;
     
 }
 
 .hrElem {
     background-color: aliceblue;
     border: 2px solid black;
-    border-radius: 15%;
-    padding: 1% 3% 1% 3%;
+    border-radius: 10px;
 }
 
-.hrElem div {
-    text-align: right;
-}
+
 
 .hrElem :first-child {
     font-weight: bold;
@@ -96,7 +145,6 @@ footer div {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40px;
     border: 2px solid black;
     border-radius: 50px;
     background-color: steelblue;
