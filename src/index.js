@@ -1,59 +1,12 @@
 import './style.css';
-import { getHourlyForecast, hourlyProcess, getWeatherGif, getWeatherData, getLocData, weatherProcess } from "./API calls/getWeather";
-import { createCurrentContent, populateFooter, initDocument, setWeatherGif, create3HrElem, removeAllChildElement, createDropDownOptions } from "./generateDOMelem/createDom";
-import { createDropDownMenu, dropdownToggle } from "./Events/dropdownMenu";
+import { getHourlyForecast, getWeatherGif, getWeatherData, getLocData } from "./API calls/APIcalls";
+import { hourlyProcess, weatherProcess } from "./API calls/dataProcessing";
+import { initDocument } from "./generateDOMelem/createDom";
+import { create3HrElem, createCurrentContent, populateFooter, setWeatherGif  } from "./generateDOMelem/dynamicElements";
+import { addEvents } from "./Events/eventListeners";
+import { removeAllChildElement } from "./generateDOMelem/utility";
 
 let cityName = 'oslo';
-
-function addEvents() {
-    const btn = document.querySelector('#searchBtn');
-    const input = document.querySelector('#location');
-    const dropdownContainer = document.querySelector('.dropdownContainer');
-
-    btn.addEventListener('click', async () => {
-        if(dropdownContainer.style.display !== 'block') {
-            dropdownContainer.style.display = 'block';
-        }
-        cityName = input.value;
-        const cities = await getLocations(cityName);
-        //input.value = '';
-        
-        if (cities === undefined){
-            alert(`'${input.value}' was not found`);
-        }
-         else if (cities.length === 1) {
-            populateDom(cities[0].lat, cities[0].lon);
-        } else {
-            createDropDownOptions(cities.length);
-        
-            for (let index = 0; index < cities.length; index++) {
-                const element = cities[index];
-                const DomElement = document.querySelector(`#item${index + 1}`);
-                if(element.state === undefined) {
-                    DomElement.textContent = `${element.name}, ${element.country}`;
-                } else {
-                    DomElement.textContent = `${element.name}, ${element.state}, ${element.country}`;
-
-                }
-                
-                DomElement.addEventListener('click', async (e) => {
-                    populateDom(element.lat, element.lon);
-                    dropdownContainer.style.display = 'none';
-                });
-            }
-        }
-
-        
-        //populateDom(cityName);
-    });
-
-    input.addEventListener('keypress', (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            btn.click();
-        }
-    });
-}
 
 async function populateDom(lat, lon) {
     const weatherData = await getWeatherData(lat, lon);
@@ -112,3 +65,5 @@ initDocument();
 getInitLoc(cityName);
 footerData();
 addEvents();
+
+export {populateDom, getLocations}

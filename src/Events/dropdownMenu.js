@@ -18,5 +18,3 @@ function dropdownToggle(toggleElement) {
     }
 }
 
-
-export {createDropDownMenu, dropdownToggle};

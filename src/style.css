@@ -1,4 +1,5 @@
 body {
+    margin: 0px;
     width: 100vw;
     height: 100vh;
     background-image: url('https://ugc.berkeley.edu/wp-content/uploads/2016/01/thunderstorm-3625405_1920-1536x864.jpg');
@@ -11,69 +12,81 @@ body {
 }
 
 @media only screen and (max-width: 750px) {
-    .mainContainer {width: 100vw; height: 90vh;}
-    .searchBox {width: 50px; height: 100px;}
-    button {width: 100px; height: 35px; margin-top: 5px;}
-    .contentContainer{padding: 2px;}
+    .mainContainer {width: 100vw; height: 100vh;}
+    .searchBox {height: 100px;}
+    #location {height: 25px; width: 250px; font-size: 1em;}
+    button {width: 100px; height: 35px; margin-top: 5px; font-size: 1em;}
+    .contentContainer{max-width: 85%; padding: 10px;}
     .content {width: 320px; height: 110px; }
-    .weatherGif{width: 320px;}
-    .hr3Container{width: 330px; font-size: 0.6em;}
-    .hrElem{width: 50px; padding: 5px; height: 105px;}
-    .hrElem img{width: 35px;}
-    .footer{width: 320px; height: 50px;}
+    .weatherGif{max-width: 90%; margin-top: 5px;}
+    .hr3Container{width: 320px; font-size: 0.55em; margin-top: 5px;}
+    .hrElem{width: 60px; height: 115px;}
+    .hrElem img{width: 30px; margin: 2px 0px 2px 0px ;}
+    .hrElem div {padding: 0px 3px 3px 3px;}
+    .hrElem :first-child {padding: 3px 0px 0px 0px;}
+    .footer{width: 320px; height: 50px; margin-bottom: 5px;}
 }
 
 @media only screen and (min-width: 750px) {
-    .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 100px;}
-    button {width: 100px; height: 35px; margin-top: 5px;}
+    .mainContainer {width: 100vw; height: 100vh;}
+    .searchBox {height: 100px;}
+    #location {height: 35px; width: 250px; font-size: 1.5em;}
+    button {width: 100px; height: 35px; margin-top: 5px; font-size: 1em;}
     .contentContainer{padding: 15px;}
     .content {width: 450px; height: 110px;}
-    .weatherGif{width: 500px;}
-    .hr3Container{width: 600px; font-size: 0.7em;}
-    .hrElem{width: 90px; padding: 5px; height: 105px;}
-    .hrElem img{width: 40px;}
-    .footer{width: 700px; height: 40px;}
+    .weatherGif{max-width: 90%; margin-top: 15px;}
+    .hr3Container{width: 600px; font-size: 0.7em; margin-top: 25px;}
+    .hrElem{width: 90px; height: 115px;}
+    .hrElem img{width: 40px;  margin: 2px 0px 2px 0px ;}
+    .hrElem div {padding: 0px 3px 3px 3px;}
+    .hrElem :first-child {padding: 3px 0px 0px 0px;}
+    .footer{width: 700px; height: 40px; margin-bottom: 25px}
     .footer div{padding: 10px;}
 }
 
 @media only screen and (min-width: 1000px) {
-    .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 100px;}
+    .mainContainer {width: 100vw; height: 100vh;}
+    .searchBox {height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .contentContainer{padding: 15px;}
     .content {width: 450px; height: 110px;}
-    .weatherGif{width: 400px;}
-    .hr3Container{width: 900px; font-size: 0.8em;}
-    .hrElem{width: 150px; padding: 5px; height: 105px;}
-    .hrElem img{width: 55px;}
-    .footer{width: 900px; height: 40px;}
+    .weatherGif{height: 300px;}
+    .hr3Container{width: 800px; font-size: 0.8em;}
+    .hrElem{width: 150px; height: 125px;}
+    .hrElem img{width: 55px;  margin: 2px 0px 2px 0px ;}
+    .hrElem div {padding: 0px 3px 3px 3px;}
+    .hrElem :first-child {padding: 3px 0px 0px 0px;}
+    .footer{width: 800px; height: 40px;}
     .footer div{padding: 10px;}
 }
 @media only screen and (min-width: 1400px) {
-    .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 100px;}
+    .mainContainer {width: 100vw; height: 100vh;}
+    .searchBox {height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .contentContainer{padding: 15px;}
     .content {width: 450px; height: 110px;}
-    .weatherGif{width: 400px;}
-    .hr3Container{width: 900px; font-size: 0.8em;}
-    .hrElem{width: 150px; padding: 5px; height: 105px;}
-    .hrElem img{width: 55px;}
-    .footer{width: 900px; height: 40px;}
+    .weatherGif{height: 300px;}
+    .hr3Container{width: 800px; font-size: 0.8em;}
+    .hrElem{width: 150px; height: 125px;}
+    .hrElem img{width: 55px;  margin: 2px 0px 2px 0px ;} 
+    .hrElem div {padding: 0px 3px 3px 3px;}
+    .hrElem :first-child {padding: 3px 0px 0px 0px;}
+    .footer{width: 800px; height: 40px;}
     .footer div{padding: 10px;}
 }
 @media only screen and (min-width: 2560px) {
-    .mainContainer {width: 100vw; height: 95vh;}
-    .searchBox {width: 50px; height: 100px;}
+    .mainContainer {width: 100vw; height: 100vh;}
+    .searchBox {height: 100px;}
     button {width: 100px; height: 35px; margin-top: 5px;}
     .contentContainer{padding: 15px;}
     .content {width: 450px; height: 110px;}
-    .weatherGif{width: 400px;}
-    .hr3Container{width: 900px; font-size: 0.8em;}
-    .hrElem{width: 150px; padding: 5px; height: 105px;}
-    .hrElem img{width: 55px;}
-    .footer{width: 900px; height: 40px;}
+    .weatherGif{height: 300px;}
+    .hr3Container{width: 800px; font-size: 0.8em;}
+    .hrElem{width: 160px; height: 125px;}
+    .hrElem img{width: 55px;  margin: 2px 0px 2px 0px ;}
+    .hrElem div {padding: 0px 3px 3px 3px;}
+    .hrElem :first-child {padding: 3px 0px 0px 0px;}
+    .footer{width: 800px; height: 40px;}
     .footer div{padding: 10px;}
 }
 
@@ -82,7 +95,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
 
 
 }
@@ -189,6 +202,8 @@ footer div {
     font-weight: bold;
     text-align: center;
     border-bottom: 2px solid black;
+    border-radius:10px 10px 0px 0px;
+    background-color: rgb(190, 250, 250);
 }
 
 .hrElem img {
